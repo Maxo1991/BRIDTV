@@ -1,0 +1,36 @@
+Aplikacija je napravljena samo za Youtube klipove.
+Na početnoj strani je login forma, ako smo se pre toga registrovali možemo da unesemo email i password i doćemo na početnu stranu videos. Ako nemamo nalog onda
+imamo opciju za registraciju u headeru. U registracionoj formi unosimo email i password. Kada se forma submituje šalje se email sa aktivacionim kodom na email koji
+smo uneli. Ja sam koristio PHPmailer klasu za slanje aktivacionog linka(na svom google nalogu sam smanjio bezbednost, aktivacioni link mi stigne u nepoželjne
+poruke posle nekoliko minuta). Prilikom registracije user se sačuva u tabelu user i dobije status 0, kada se klikne na aktivacioni link status se promeni na 1 i
+onda se možemo ulogovati u aplikaciju.
+
+Kada se uđe na aplikaciju vodi nas na stranicu gde se prikazuju klipovi u tabeli sa podacima o klipu. U koloni actions imamo mogućnost view, edit, delete opciju.
+Editovati se može samo naslov jer ostali su podaci nepromenljivi. U sidebaru se nalaze 3 linka.
+
+Get Video nas vodi do forme u koju se unosi youtube link i naš naziv kako hoćemo da se sačuva, kada se klikne save, ispod forme se pojavi koji je video u pitanju i
+određeni podaci, kada se klikne na download video se sačuva u bazi i redirektuje se na listu klipova.
+Snimanje klipa na webroot/videos/VIDEO_ID.mp4 lokaciju nisam uspeo, ja kada downloadujem video, downloadujem ga na moj kompjuter, jedino mi je opcija da ga
+uploadujem u datu rutu sa mog kompjutera. To sam prevazišao tako što sam u tabelu videos sačuvao link na kojem se prikazuje video i onda sam u aplikaciji pozivao
+taj link iz baze. U VideosController u methodi download sam zakomentarisao deo gde se vrsi download, jer ga sacuva na moj racunar, a ne u webroot.
+
+Edit user details - mogu da se menjaju podaci o useru.
+
+Bazu sam eksportova u fajl fetchVideo.sql koji se nalazi u projektu. Tabela videos je prazna, ona će se popuniti kada unesete linkove za youtube.
+Nekoliko youtube linikova za proveru:
+    https://www.youtube.com/watch?v=4CyQqIBEiWY
+    https://youtu.be/4CyQqIBEiWY
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/4CyQqIBEiWY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    https://www.youtube.com/watch?v=QwWFZl-kljI
+    https://www.youtube.com/watch?v=AGB7tLJLWYA&list=RD9shbFhAnrzg&index=2
+
+U bazi se nalaze dva korisnika:
+    prvi koji nije aktivan
+    email: user@gmail.com
+    password: user1
+
+    drugi koji je aktivan
+    email: igormaksimovic991@gmail.com
+    password: igori
+
+
